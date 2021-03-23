@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scheme</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+<div id="js-picker" class="colorPicker">
+    <div id="big-block" class="table-and-rect">
+            <div id="BigRectangle" class="BigRectangle-background">
+                <svg height="300" width="300">
+                    <defs>
+                        <linearGradient id="color-gradient-black" x1="0%" x2="0%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgb(0,0,0)" stop-opacity="0"></stop>
+                            <stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="color-gradient-white" x1="0%" x2="100%" y1="0%" y2="0%">
+                            <stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"></stop>
+                            <stop offset="100%" stop-color="rgb(255,255,255)" stop-opacity="0"></stop>
+                        </linearGradient>
+                    </defs>
+                    <rect id="color-picker-tone" x="0" y="0" width="100%" height="100%" fill="rgb(255,0,0)" style="fill:
+            rgb(22, 243, 178);"></rect>
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#color-gradient-white)"></rect>
+                    <rect shape-rendering="crispEdges" x="0" y="0" width="100%" height="100%"
+                          fill="url(#color-gradient-black)">
+                    </rect>
+                    <svg height="300" width="300" class="Cursor-Rectangle">
+                        <circle id="colorPickerCursor" class="cursor" cx="59" cy="52" r="6" stroke="black"
+                                stroke-width="2.3" fill="none" transform="translate(0,0)"
+                                style="opacity: 1; transition: all 0.1s linear 0s; "></circle>
+                    </svg>
+                </svg>
+            </div>
+
+        <div class="color-volume" style="height: 312px">
+            <div id="volumeRect" class="volume-rect">
+                <input type="range" id="volume" name="volume" value="162" oninput="Volume()" min="0" max="356" step="1">
+
+            </div>
+        </div>
+
+        <div class="colorTable">
+            <div class="currentColorContainer">
+                <div id="currentColor" class="currentColor" style="background: rgb(22, 243, 178);"></div>
+            </div>
+            <div class="hex">
+                <label class="label-block">#</label>
+                <input id="hex-input" class="" type="text" maxlength="6" value="16f3b2" minlength="6" onchange="HEX()">
+            </div>
+
+            <div class="colorFields">
+                <div class="color r">
+                    <label class="label-block">R</label>
+                    <input id="r-input" class="" type="number" max="255" value="22"
+                           oninput="RGBtoCMYK();RGBToHSL()">
+                </div>
+                <div class="color g">
+                    <label class="label-block">G</label>
+                    <input id="g-input" class="" type="number" max="255" value="243"
+                           oninput="RGBtoCMYK();RGBToHSL()">
+                </div>
+                <div class="color b">
+                    <label class="label-block">B</label>
+                    <input id="b-input" class="" type="number" max="255" value="178"
+                           oninput="RGBtoCMYK();RGBToHSL()">
+                </div>
+            </div>
+
+            <div class="colorFields">
+                <div class="color c">
+                    <label class="label-block">C</label>
+                    <input id="c-input" class="" type="number" max="100" value="91"
+                           oninput="CMYKtoRGB();CMYKtoHLS()">
+                    <label class="">%</label>
+                </div>
+                <div class="color m">
+                    <label class="label-block">M</label>
+                    <input id="m-input" class="" type="number" max="100" value="0"
+                           oninput="CMYKtoRGB();CMYKtoHLS()">
+                    <label class="">%</label>
+                </div>
+                <div class="color y">
+                    <label class="label-block">Y</label>
+                    <input id="y-input" class="" type="number" max="100" value="27"
+                           oninput="CMYKtoRGB();CMYKtoHLS()">
+                    <label class="">%</label>
+                </div>
+                <div class="color k">
+                    <label class="label-block">K</label>
+                    <input id="k-input" class="" type="number" max="100" value="5"
+                           oninput="CMYKtoRGB();CMYKtoHLS()">
+                    <label class="">%</label>
+                </div>
+            </div>
+
+            <div class="colorFields">
+                <div class="color h">
+                    <label class="label-block">H</label>
+                    <input id="h-input" class="" type="number" max="356" value="162"
+                           oninput="HLStoRGB();HLStoCMYK()">
+                </div>
+                <div class="color l">
+                    <label class="label-block">L</label>
+                    <input id="l-input" class="" type="number" max="100" value="52"
+                           oninput="HLStoRGB();HLStoCMYK()">
+                    <label class="">%</label>
+                </div>
+                <div class="color s">
+                    <label class="label-block">S</label>
+                    <input id="s-input" class="" type="number" max="100" value="90"
+                           oninput="HLStoRGB();HLStoCMYK()">
+                    <label class="">%</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="finalScript.js"></script>
+</html>
